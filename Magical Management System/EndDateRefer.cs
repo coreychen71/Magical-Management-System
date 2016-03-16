@@ -25,12 +25,12 @@ namespace Magical_Management_System
             cboDays.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private DataTable ReloadData(string startDate,string endDate)
+        private DataTable ReloadData(string date)
         {
             DataTable result = new DataTable();
             string strComm = "select ano+cno+cust as '客戶編號',name as '姓名',area+'-'+tel as '市話',cell as '手機1'," +
-                "cell2 as '手機2',startdate as '起算日',enddate as '到期日' from custom where enddate between '" +
-                startDate + "' and '" + endDate + "'";
+                "cell2 as '手機2',startdate as '起算日',enddate as '到期日' from custom where enddate='" + date + "' " +
+                "and use_kind=1";
             using (SqlConnection sqlcon = new SqlConnection(cmsCon))
             {
                 using (SqlCommand sqlcomm = new SqlCommand(strComm, sqlcon))
@@ -59,8 +59,8 @@ namespace Magical_Management_System
             else
             {
                 days = Convert.ToInt32(cboDays.Text);
-                endDay = nowDay.AddDays(days);
-                dgvDataShow.DataSource = ReloadData(nowDay.ToString("yyyy-MM-dd"), endDay.ToString("yyyy-MM-dd"));
+                endDay = nowDay.AddDays(-days);
+                dgvDataShow.DataSource = ReloadData(endDay.ToString("yyyy-MM-dd"));
                 lblDataCountResult.Text = dgvDataShow.Rows.Count - 1 + "筆";
             }
         }

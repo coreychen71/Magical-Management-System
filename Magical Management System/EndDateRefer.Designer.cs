@@ -44,9 +44,9 @@
             this.lblDays.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblDays.Location = new System.Drawing.Point(12, 23);
             this.lblDays.Name = "lblDays";
-            this.lblDays.Size = new System.Drawing.Size(144, 19);
+            this.lblDays.Size = new System.Drawing.Size(114, 19);
             this.lblDays.TabIndex = 0;
-            this.lblDays.Text = "要查詢的剩餘天數：";
+            this.lblDays.Text = "要查詢的天數：";
             // 
             // cboDays
             // 
@@ -58,7 +58,7 @@
             "10",
             "15",
             "20"});
-            this.cboDays.Location = new System.Drawing.Point(151, 20);
+            this.cboDays.Location = new System.Drawing.Point(118, 20);
             this.cboDays.Name = "cboDays";
             this.cboDays.Size = new System.Drawing.Size(60, 27);
             this.cboDays.TabIndex = 1;
