@@ -15,6 +15,7 @@ namespace Magical_Management_System
     public partial class EndDateRefer : Form
     {
         string cmsCon = "server=TCP:192.168.1.3;database=CMS;uid=sa;pwd=Magical9070";
+        string cmsComm = "";
         int days = 0;
         DateTime nowDay = DateTime.Now;
         DateTime endDay;
@@ -25,12 +26,9 @@ namespace Magical_Management_System
             cboDays.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private DataTable ReloadData(string date)
+        private DataTable ReloadData(string strComm)
         {
             DataTable result = new DataTable();
-            string strComm = "select ano+cno+cust as '客戶編號',name as '姓名',area+'-'+tel as '市話',cell as '手機1'," +
-                "cell2 as '手機2',startdate as '起算日',enddate as '到期日' from custom where enddate='" + date + "' " +
-                "and use_kind=1";
             using (SqlConnection sqlcon = new SqlConnection(cmsCon))
             {
                 using (SqlCommand sqlcomm = new SqlCommand(strComm, sqlcon))
@@ -59,9 +57,6 @@ namespace Magical_Management_System
             else
             {
                 days = Convert.ToInt32(cboDays.Text);
-                endDay = nowDay.AddDays(-days);
-                dgvDataShow.DataSource = ReloadData(endDay.ToString("yyyy-MM-dd"));
-                lblDataCountResult.Text = dgvDataShow.Rows.Count - 1 + "筆";
             }
         }
 
@@ -149,6 +144,40 @@ namespace Magical_Management_System
             System.Runtime.InteropServices.Marshal.ReleaseComObject(excel);
             excel = null;
             GC.Collect();
+        }
+
+        private void rdoDays_CheckedChanged(object sender, EventArgs e)
+        {
+            cboDays.Enabled = true;
+            dtpStartDate.Enabled = false;
+            dtpEndDate.Enabled = false;
+        }
+
+        private void rdoDateInterval_CheckedChanged(object sender, EventArgs e)
+        {
+            cboDays.Enabled = false;
+            dtpStartDate.Enabled = true;
+            dtpEndDate.Enabled = true;
+        }
+
+        private void btnRefer_Click(object sender, EventArgs e)
+        {
+            if(rdoDays.Checked==true)
+            {
+                endDay = nowDay.AddDays(days);
+                string date = endDay.ToString("yyyy-MM-dd");
+                cmsComm = "select ano+cno+cust as '客戶編號',name as '姓名',area+'-'+tel as '市話',cell as '手機1'," +
+                "cell2 as '手機2',startdate as '起算日',enddate as '到期日' from custom where enddate='" +
+                date + "' and use_kind=1";
+            }
+            else if(rdoDateInterval.Checked==true)
+            {
+                cmsComm = "select ano+cno+cust as '客戶編號',name as '姓名',area+'-'+tel as '市話',cell as '手機1'," +
+                "cell2 as '手機2',startdate as '起算日',enddate as '到期日' from custom where enddate between '" +
+                dtpStartDate.Text + "' and '" + dtpEndDate.Text + "' and use_kind=1";
+            }
+            dgvDataShow.DataSource = ReloadData(cmsComm);
+            lblDataCountResult.Text = dgvDataShow.Rows.Count - 1 + "筆";
         }
     }
 }

@@ -227,8 +227,8 @@
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(50, 3, 0, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(91, 19);
-            this.toolStripStatusLabel1.Text = "版本號 1.9.1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(79, 19);
+            this.toolStripStatusLabel1.Text = "版本號 2.0";
             // 
             // tmrNowDateTime
             // 
