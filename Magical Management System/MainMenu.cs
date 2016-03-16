@@ -135,5 +135,16 @@ namespace Magical_Management_System
                 task.Show();
             }
         }
+
+        private void 快到期用戶查詢ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(CheckOpenWindow("EndDateRefer"))
+            {
+                EndDateRefer edr = new EndDateRefer();
+                edr.Name = "EndDateRefer";
+                edr.MdiParent = this;
+                edr.Show();
+            }
+        }
     }
 }

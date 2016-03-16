@@ -42,6 +42,7 @@
             this.未續約查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.復機戶查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退租戶查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.快到期用戶查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用戶抽獎ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -107,7 +108,8 @@
             this.續約戶查詢ToolStripMenuItem,
             this.未續約查詢ToolStripMenuItem,
             this.復機戶查詢ToolStripMenuItem,
-            this.退租戶查詢ToolStripMenuItem});
+            this.退租戶查詢ToolStripMenuItem,
+            this.快到期用戶查詢ToolStripMenuItem});
             this.查詢ToolStripMenuItem1.Name = "查詢ToolStripMenuItem1";
             this.查詢ToolStripMenuItem1.Size = new System.Drawing.Size(51, 23);
             this.查詢ToolStripMenuItem1.Text = "查詢";
@@ -116,44 +118,51 @@
             // 
             this.用戶資料查詢ToolStripMenuItem.Enabled = false;
             this.用戶資料查詢ToolStripMenuItem.Name = "用戶資料查詢ToolStripMenuItem";
-            this.用戶資料查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.用戶資料查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.用戶資料查詢ToolStripMenuItem.Text = "用戶資料查詢";
             this.用戶資料查詢ToolStripMenuItem.Click += new System.EventHandler(this.用戶資料查詢ToolStripMenuItem_Click);
             // 
             // 派工單退租戶查詢ToolStripMenuItem
             // 
             this.派工單退租戶查詢ToolStripMenuItem.Name = "派工單退租戶查詢ToolStripMenuItem";
-            this.派工單退租戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.派工單退租戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.派工單退租戶查詢ToolStripMenuItem.Text = "派工單查詢";
             this.派工單退租戶查詢ToolStripMenuItem.Click += new System.EventHandler(this.派工單查詢ToolStripMenuItem_Click);
             // 
             // 續約戶查詢ToolStripMenuItem
             // 
             this.續約戶查詢ToolStripMenuItem.Name = "續約戶查詢ToolStripMenuItem";
-            this.續約戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.續約戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.續約戶查詢ToolStripMenuItem.Text = "續約戶查詢";
             this.續約戶查詢ToolStripMenuItem.Click += new System.EventHandler(this.續約戶查詢ToolStripMenuItem_Click);
             // 
             // 未續約查詢ToolStripMenuItem
             // 
             this.未續約查詢ToolStripMenuItem.Name = "未續約查詢ToolStripMenuItem";
-            this.未續約查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.未續約查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.未續約查詢ToolStripMenuItem.Text = "未續約戶查詢";
             this.未續約查詢ToolStripMenuItem.Click += new System.EventHandler(this.未續約戶查詢ToolStripMenuItem_Click);
             // 
             // 復機戶查詢ToolStripMenuItem
             // 
             this.復機戶查詢ToolStripMenuItem.Name = "復機戶查詢ToolStripMenuItem";
-            this.復機戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.復機戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.復機戶查詢ToolStripMenuItem.Text = "復機戶查詢";
             this.復機戶查詢ToolStripMenuItem.Click += new System.EventHandler(this.復機戶查詢ToolStripMenuItem_Click);
             // 
             // 退租戶查詢ToolStripMenuItem
             // 
             this.退租戶查詢ToolStripMenuItem.Name = "退租戶查詢ToolStripMenuItem";
-            this.退租戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.退租戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.退租戶查詢ToolStripMenuItem.Text = "退租戶查詢";
             this.退租戶查詢ToolStripMenuItem.Click += new System.EventHandler(this.退租戶查詢ToolStripMenuItem_Click);
+            // 
+            // 快到期用戶查詢ToolStripMenuItem
+            // 
+            this.快到期用戶查詢ToolStripMenuItem.Name = "快到期用戶查詢ToolStripMenuItem";
+            this.快到期用戶查詢ToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
+            this.快到期用戶查詢ToolStripMenuItem.Text = "快到期用戶查詢";
+            this.快到期用戶查詢ToolStripMenuItem.Click += new System.EventHandler(this.快到期用戶查詢ToolStripMenuItem_Click);
             // 
             // 工具ToolStripMenuItem
             // 
@@ -237,7 +246,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Magical Management System Rev 1.9.1";
+            this.Text = "Magical Management System Rev 2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -271,6 +280,7 @@
         public System.Windows.Forms.ToolStripMenuItem 復機戶查詢ToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem 用戶抽獎ToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem 派工ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 快到期用戶查詢ToolStripMenuItem;
     }
 }
 

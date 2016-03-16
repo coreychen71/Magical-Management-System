@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Magical_Management_System</RootNamespace>
     <AssemblyName>Magical Management System</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,12 @@
     </Compile>
     <Compile Include="Discontinue.Designer.cs">
       <DependentUpon>Discontinue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EndDateRefer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndDateRefer.Designer.cs">
+      <DependentUpon>EndDateRefer.cs</DependentUpon>
     </Compile>
     <Compile Include="InquireUser.cs">
       <SubType>Form</SubType>
@@ -92,6 +99,12 @@
     <Compile Include="NoReplenish.Designer.cs">
       <DependentUpon>NoReplenish.cs</DependentUpon>
     </Compile>
+    <Compile Include="PGB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PGB.Designer.cs">
+      <DependentUpon>PGB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repeat.cs">
@@ -121,6 +134,9 @@
     <EmbeddedResource Include="Discontinue.resx">
       <DependentUpon>Discontinue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EndDateRefer.resx">
+      <DependentUpon>EndDateRefer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InquireUser.resx">
       <DependentUpon>InquireUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NoReplenish.resx">
       <DependentUpon>NoReplenish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PGB.resx">
+      <DependentUpon>PGB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +182,7 @@
     <EmbeddedResource Include="Task.resx">
       <DependentUpon>Task.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
