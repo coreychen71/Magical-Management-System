@@ -155,11 +155,11 @@ namespace Magical_Management_System
                                 " and custom.ano= maintain.ano and comm.cno=custom.cno and custom.cno = maintain.cno and custom.cust = " +
                                 "maintain.cust and maintain.ano='" + txtAreaNum.Text + "' and maintain.cno='" + txtCommunityNum.Text + "'" +
                                 " and maintain.gotime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" +
-                                dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
+                                dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
                                 " ano as '區碼', cno as '社區碼', cust as '用戶碼', name as '姓名', tel as '電話', cell as '手機', " +
                                 "gotime as '派工日期', finishtime as '結案日期', probrem as '報修事項', solution as '處理事項', meno2 as '工程', meno1 as '客服' from " +
                                 "maintain where (maintain.cname='" + CnameTable.Rows[0]["cname"].ToString() + "') and (gotime between '" +
-                                dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "')";
+                                dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "')";
                         SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);
                         SqlDataAdapter dataadapter = new SqlDataAdapter(Cmscomm, CmsConnection);
                         DataTable dtTable = new DataTable();
@@ -246,7 +246,7 @@ namespace Magical_Management_System
                              " maintain.meno2 as '工程', maintain.meno1 as '客服' from comm, custom, maintain where (comm.ano = custom.ano" +
                              " and custom.ano= maintain.ano and comm.cno=custom.cno and custom.cno = maintain.cno and custom.cust = " +
                              "maintain.cust and maintain.meno2='" + txtEngNum.Text + "' and maintain.gotime between '" +
-                             dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "')";
+                             dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "')";
                     SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);
                     SqlDataAdapter dataadapter = new SqlDataAdapter(Cmscomm, CmsConnection);
                     DataTable dtTable = new DataTable();
@@ -332,7 +332,7 @@ namespace Magical_Management_System
                              " maintain.meno2 as '工程', maintain.meno1 as '客服' from comm, custom, maintain where (comm.ano = custom.ano" +
                              " and custom.ano= maintain.ano and comm.cno=custom.cno and custom.cno = maintain.cno and custom.cust = " +
                              "maintain.cust and maintain.meno1='" + txtSerNum.Text + "' and maintain.gotime between '" +
-                             dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "')";
+                             dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "')";
                     SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);
                     SqlDataAdapter dataadapter = new SqlDataAdapter(Cmscomm, CmsConnection);
                     DataTable dtTable = new DataTable();
@@ -430,11 +430,11 @@ namespace Magical_Management_System
                                     " and custom.ano= maintain.ano and comm.cno=custom.cno and custom.cno = maintain.cno and custom.cust = " +
                                     "maintain.cust and maintain.ano='" + txtAreaNum.Text + "' and maintain.cno='" + txtCommunityNum.Text + "'" +
                                     " and maintain.meno2='" + txtEngNum.Text + "' and maintain.gotime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" +
-                                    dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
+                                    dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
                                     " ano as '區碼', cno as '社區碼', cust as '用戶碼', name as '姓名', tel as '電話', cell as '手機', " +
                                     "gotime as '派工日期', finishtime as '結案日期', probrem as '報修事項', solution as '處理事項', meno2 as '工程', meno1 as '客服' from " +
                                     "maintain where (maintain.cname='" + CnameTable.Rows[0]["cname"].ToString() + "') and (meno2='" + txtEngNum.Text + "') and (gotime between '" +
-                                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "')";
+                                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "')";
                         SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);
                         SqlDataAdapter dataadapter = new SqlDataAdapter(Cmscomm, CmsConnection);
                         DataTable dtTable = new DataTable();
@@ -533,11 +533,11 @@ namespace Magical_Management_System
                                     " and custom.ano= maintain.ano and comm.cno=custom.cno and custom.cno = maintain.cno and custom.cust = " +
                                     "maintain.cust and maintain.ano='" + txtAreaNum.Text + "' and maintain.cno='" + txtCommunityNum.Text + "'" +
                                     " and maintain.meno1='" + txtSerNum.Text + "' and maintain.gotime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" +
-                                    dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
+                                    dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') union select ticket as '派工單號', gno as '組別',cname as '社區名稱'," +
                                     " ano as '區碼', cno as '社區碼', cust as '用戶碼', name as '姓名', tel as '電話', cell as '手機', " +
                                     "gotime as '派工日期', finishtime, probrem as '報修事項', solution as '處理事項', meno2 as '工程', meno1 as '客服' from " +
                                     "maintain where (maintain.cname='" + CnameTable.Rows[0]["cname"].ToString() + "') and (meno1='" + txtSerNum.Text + "') and (gotime between '" +
-                                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "')";
+                                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "')";
                         SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);
                         SqlDataAdapter dataadapter = new SqlDataAdapter(Cmscomm, CmsConnection);
                         DataTable dtTable = new DataTable();

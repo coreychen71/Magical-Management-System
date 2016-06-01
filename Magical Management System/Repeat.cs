@@ -45,6 +45,7 @@ namespace Magical_Management_System
             if(dtTable.Rows.Count==0)
             {
                 MessageBox.Show("查詢的日期區間，無復機用戶！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             //先將price欄位加總並指定給PriceTotal，再建一個double PriceTotalNum
             //然後再把PriceTotalNum轉成字串貨幣格式並指定給lblTotalPriceShow

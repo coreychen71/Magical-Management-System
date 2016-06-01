@@ -33,14 +33,14 @@ namespace Magical_Management_System
             {
                 Cmscomm = "select custom.ano, custom.cno, custom.cust, custom.name, contract.price, contract.ps, contract.con_no," +
                     " custom.setdate, custom.startdate, custom.enddate, custom.stopdate, custom.memo from contract,custom where (custom." +
-                    "enddate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "enddate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
                     "') and (custom.con_no=contract.con_no) and (custom.stopdate is null)";
             }
             else
             {
                 Cmscomm = "select custom.ano, custom.cno, custom.cust, custom.name, contract.price, contract.ps, contract.con_no," +
                     " custom.setdate, custom.startdate, custom.enddate, custom.stopdate, custom.memo from contract,custom where (custom." +
-                    "enddate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "enddate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
                     "') and (custom.con_no=contract.con_no)";
             }
             SqlCommand comm = new SqlCommand(Cmscomm, CmsConnection);

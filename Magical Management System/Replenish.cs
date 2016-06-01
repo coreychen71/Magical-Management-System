@@ -43,7 +43,7 @@ namespace Magical_Management_System
                 "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate from contract," +
                 "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
                 " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='7')";
+                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='7')";
                 
             }
             else if(chkPauseUser.Checked==false & chkStopUser.Checked==true)
@@ -52,7 +52,7 @@ namespace Magical_Management_System
                 "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate, custom.stopdate from contract," +
                 "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
                 " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='6')";
+                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='6')";
             }
             else
             {
@@ -60,7 +60,7 @@ namespace Magical_Management_System
                 "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate from contract," +
                 "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
                 " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 00:00:00") + "') and (custom.con_no=contract.con_no) and (custom.use_kind in (1,7))";
+                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind in (1,7))";
             }
             if (chkStopUser.Checked == true)
             {
