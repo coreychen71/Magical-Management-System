@@ -24,6 +24,56 @@ namespace Magical_Management_System
             lblTotalPriceShow.Text = "";
         }
 
+        private void dgvFormatInStopDate()
+        {
+            dgvShowData.Columns[0].HeaderText = "客戶編號";
+            dgvShowData.Columns[1].HeaderText = "姓名";
+            dgvShowData.Columns[2].HeaderText = "金額";
+            dgvShowData.Columns[3].HeaderText = "合約別";
+            dgvShowData.Columns[4].HeaderText = "合約編號";
+            dgvShowData.Columns[5].HeaderText = "應繳日期";
+            dgvShowData.Columns[6].HeaderText = "繳費日期";
+            dgvShowData.Columns[7].HeaderText = "起算日";
+            dgvShowData.Columns[8].HeaderText = "到期日";
+            dgvShowData.Columns[9].HeaderText = "退租日";
+            dgvShowData.Columns[10].HeaderText = "業務";
+            dgvShowData.Columns[0].Width = 90;
+            dgvShowData.Columns[1].Width = 80;
+            dgvShowData.Columns[2].Width = 40;
+            dgvShowData.Columns[3].Width = 80;
+            dgvShowData.Columns[4].Width = 80;
+            dgvShowData.Columns[5].Width = 80;
+            dgvShowData.Columns[6].Width = 80;
+            dgvShowData.Columns[7].Width = 80;
+            dgvShowData.Columns[8].Width = 80;
+            dgvShowData.Columns[9].Width = 80;
+            dgvShowData.Columns[10].Width = 90;
+        }
+
+        private void dgvFormat()
+        {
+            dgvShowData.Columns[0].HeaderText = "客戶編號";
+            dgvShowData.Columns[1].HeaderText = "姓名";
+            dgvShowData.Columns[2].HeaderText = "金額";
+            dgvShowData.Columns[3].HeaderText = "合約別";
+            dgvShowData.Columns[4].HeaderText = "合約編號";
+            dgvShowData.Columns[5].HeaderText = "應繳日期";
+            dgvShowData.Columns[6].HeaderText = "繳費日期";
+            dgvShowData.Columns[7].HeaderText = "起算日";
+            dgvShowData.Columns[8].HeaderText = "到期日";
+            dgvShowData.Columns[9].HeaderText = "業務";
+            dgvShowData.Columns[0].Width = 90;
+            dgvShowData.Columns[1].Width = 80;
+            dgvShowData.Columns[2].Width = 40;
+            dgvShowData.Columns[3].Width = 80;
+            dgvShowData.Columns[4].Width = 80;
+            dgvShowData.Columns[5].Width = 80;
+            dgvShowData.Columns[6].Width = 80;
+            dgvShowData.Columns[7].Width = 80;
+            dgvShowData.Columns[8].Width = 80;
+            dgvShowData.Columns[9].Width = 90;
+        }
+
         private void btnInquiry_Click(object sender, EventArgs e)
         {
             SqlConnection CmsConnection = new SqlConnection("server=TCP:192.168.1.3;database=CMS;uid=sa;pwd=Magical9070");
@@ -39,28 +89,39 @@ namespace Magical_Management_System
             }
             else if(chkPauseUser.Checked==true & chkStopUser.Checked==false)
             {
-                Cmscomm = "select custom.ano, custom.cno, custom.cust, custom.name, paylist.price, contract.ps, contract.con_no," +
-                "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate from contract," +
-                "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
-                " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='7')";
-                
+                Cmscomm = "select custom.ano+custom.cno+custom.cust as custno, custom.name, paylist.price," +
+                    "contract.ps, contract.con_no,paylist.v_date, convert(char(10),paylist.p_date,20) as p_date," +
+                    "custom.startdate, custom.enddate, memb.meno+memb.name as sales from contract," +
+                    "custom,paylist,comm,memb where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and " +
+                    "(custom.cust=paylist.cust) and (paylist.v_date is not null) and (paylist.p_date between '" +
+                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" +
+                    dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and " +
+                    "(custom.use_kind='7') and (custom.ano=comm.ano) and (custom.cno=comm.cno) and " +
+                    "(comm.meno=memb.meno) order by memb.meno,custom.ano,custom.cno";
             }
             else if(chkPauseUser.Checked==false & chkStopUser.Checked==true)
             {
-                Cmscomm = "select custom.ano, custom.cno, custom.cust, custom.name, paylist.price, contract.ps, contract.con_no," +
-                "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate, custom.stopdate from contract," +
-                "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
-                " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind='6')";
+                Cmscomm = "select custom.ano+custom.cno+custom.cust as custno, custom.name, paylist.price," +
+                    "contract.ps, contract.con_no,paylist.v_date, convert(char(10),paylist.p_date,20) as p_date," +
+                    "custom.startdate, custom.enddate, custom.stopdate,memb.meno+memb.name as sales from contract," +
+                    "custom,paylist,comm,memb where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and " +
+                    "(custom.cust=paylist.cust) and (paylist.v_date is not null) and (paylist.p_date between '" +
+                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" +
+                    dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and " +
+                    "(custom.use_kind='6') and (custom.ano=comm.ano) and (custom.cno=comm.cno) and " +
+                    "(comm.meno=memb.meno) order by memb.meno,custom.ano,custom.cno";
             }
             else
             {
-                Cmscomm = "select custom.ano, custom.cno, custom.cust, custom.name, paylist.price, contract.ps, contract.con_no," +
-                "paylist.v_date, convert(char(10),paylist.p_date,20) as p_date, custom.startdate, custom.enddate from contract," +
-                "custom,paylist where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and (custom.cust=paylist.cust) and" +
-                " (paylist.v_date is not null) and (paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and (custom.use_kind in (1,7))";
+                Cmscomm = "select custom.ano+custom.cno+custom.cust as custno, custom.name, paylist.price," +
+                    "contract.ps, contract.con_no,paylist.v_date, convert(char(10),paylist.p_date,20) as p_date," +
+                    "custom.startdate, custom.enddate,memb.meno+memb.name as sales from contract," +
+                    "custom,paylist,comm,memb where (custom.ano=paylist.ano) and (custom.cno=paylist.cno) and " +
+                    "(custom.cust=paylist.cust) and (paylist.v_date is not null) and (paylist.p_date between '" +
+                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" +
+                    dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "') and (custom.con_no=contract.con_no) and " +
+                    "(custom.use_kind in (1,7)) and (custom.ano=comm.ano) and (custom.cno=comm.cno) and " +
+                    "(comm.meno=memb.meno) order by memb.meno,custom.ano,custom.cno";
             }
             if (chkStopUser.Checked == true)
             {
@@ -70,11 +131,11 @@ namespace Magical_Management_System
                 dtTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataadapter.Fill(dtTable);
                 lblDataListNum.Text = "共" + dtTable.Rows.Count + "筆";
-                dtTable.DefaultView.Sort = "p_date asc";
                 if (dtTable.Rows.Count == 0)
                 {
                     MessageBox.Show("查詢的日期、條件，無符合用戶！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblTotalPriceShow.Text = "";
+                    return;
                 }
                 else
                 {
@@ -86,30 +147,7 @@ namespace Magical_Management_System
                 }
                 dgvShowData.Columns.Clear();
                 dgvShowData.DataSource = dtTable;
-                dgvShowData.Columns[0].HeaderText = "區碼";
-                dgvShowData.Columns[1].HeaderText = "社區碼";
-                dgvShowData.Columns[2].HeaderText = "用戶碼";
-                dgvShowData.Columns[3].HeaderText = "姓名";
-                dgvShowData.Columns[4].HeaderText = "金額";
-                dgvShowData.Columns[5].HeaderText = "合約別";
-                dgvShowData.Columns[6].HeaderText = "合約編號";
-                dgvShowData.Columns[7].HeaderText = "應繳日期";
-                dgvShowData.Columns[8].HeaderText = "繳費日期";
-                dgvShowData.Columns[9].HeaderText = "起算日";
-                dgvShowData.Columns[10].HeaderText = "到期日";
-                dgvShowData.Columns[11].HeaderText = "退租日";
-                dgvShowData.Columns[0].Width = 40;
-                dgvShowData.Columns[1].Width = 70;
-                dgvShowData.Columns[2].Width = 70;
-                dgvShowData.Columns[3].Width = 80;
-                dgvShowData.Columns[4].Width = 40;
-                dgvShowData.Columns[5].Width = 70;
-                dgvShowData.Columns[6].Width = 80;
-                dgvShowData.Columns[7].Width = 80;
-                dgvShowData.Columns[8].Width = 80;
-                dgvShowData.Columns[9].Width = 80;
-                dgvShowData.Columns[10].Width = 80;
-                dgvShowData.Columns[11].Width = 80;
+                dgvFormatInStopDate();
                 CmsConnection.Close();
             }
             else
@@ -120,11 +158,11 @@ namespace Magical_Management_System
                 dtTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataadapter.Fill(dtTable);
                 lblDataListNum.Text = "共" + dtTable.Rows.Count + "筆";
-                dtTable.DefaultView.Sort = "p_date asc";
                 if (dtTable.Rows.Count == 0)
                 {
                     MessageBox.Show("查詢的日期、條件，無符合用戶！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblTotalPriceShow.Text = "";
+                    return;
                 }
                 else
                 {
@@ -136,28 +174,7 @@ namespace Magical_Management_System
                 }
                 dgvShowData.Columns.Clear();
                 dgvShowData.DataSource = dtTable;
-                dgvShowData.Columns[0].HeaderText = "區碼";
-                dgvShowData.Columns[1].HeaderText = "社區碼";
-                dgvShowData.Columns[2].HeaderText = "用戶碼";
-                dgvShowData.Columns[3].HeaderText = "姓名";
-                dgvShowData.Columns[4].HeaderText = "金額";
-                dgvShowData.Columns[5].HeaderText = "合約別";
-                dgvShowData.Columns[6].HeaderText = "合約編號";
-                dgvShowData.Columns[7].HeaderText = "應繳日期";
-                dgvShowData.Columns[8].HeaderText = "繳費日期";
-                dgvShowData.Columns[9].HeaderText = "起算日";
-                dgvShowData.Columns[10].HeaderText = "到期日";
-                dgvShowData.Columns[0].Width = 40;
-                dgvShowData.Columns[1].Width = 70;
-                dgvShowData.Columns[2].Width = 70;
-                dgvShowData.Columns[3].Width = 80;
-                dgvShowData.Columns[4].Width = 40;
-                dgvShowData.Columns[5].Width = 70;
-                dgvShowData.Columns[6].Width = 80;
-                dgvShowData.Columns[7].Width = 80;
-                dgvShowData.Columns[8].Width = 80;
-                dgvShowData.Columns[9].Width = 80;
-                dgvShowData.Columns[10].Width = 80;
+                dgvFormat();
                 CmsConnection.Close();
             }
         }
