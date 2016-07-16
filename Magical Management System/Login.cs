@@ -50,18 +50,15 @@ namespace Magical_Management_System
                         MainMenu MM = new MainMenu();
                         MM.tslblUserName.Text = p["name"].ToString();
                         p.Close();
-                        string SqlComm = "select dpna, ss from memb where name='" + MM.tslblUserName.Text + "'";
+                        string SqlComm = "select dpna from memb where name='" + MM.tslblUserName.Text + "'";
                         SqlCommand CommGo = new SqlCommand(SqlComm, cmsConn);
                         SqlDataAdapter ReadAcc = new SqlDataAdapter(CommGo);
                         DataTable DataTable = new DataTable();
                         ReadAcc.Fill(DataTable);
                         string dpna =Convert.ToString(DataTable.Rows[0][0].ToString());
-                        string ss = Convert.ToString(DataTable.Rows[0][1].ToString());
                         string A = "200";
                         string B = "400";
-                        string C = "1206";
-                        string D = "1368";
-                        if ((dpna == A & ss==D) | (dpna==B & ss==D))
+                        if (dpna == A)
                         {
                             MM.派工ToolStripMenuItem.Enabled = true;
                             MM.續約戶查詢ToolStripMenuItem.Enabled = true;
@@ -70,7 +67,7 @@ namespace Magical_Management_System
                             MM.退租戶查詢ToolStripMenuItem.Enabled = true;
                             MM.用戶抽獎ToolStripMenuItem.Enabled = true;
                         }
-                        else if(dpna==A & ss==C)
+                        else if(dpna==B)
                         {
                             MM.派工ToolStripMenuItem.Enabled = true;
                             MM.續約戶查詢ToolStripMenuItem.Enabled = true;
