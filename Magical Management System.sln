@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magical Management System", "Magical Management System\Magical Management System.csproj", "{F812A185-7775-455A-8F63-D9ADC922E710}"
+EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup", "Setup\Setup.isproj", "{389CCECB-8ED2-4EE2-A053-E98269BA35B1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F812A185-7775-455A-8F63-D9ADC922E710} = {F812A185-7775-455A-8F63-D9ADC922E710}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +39,26 @@ Global
 		{F812A185-7775-455A-8F63-D9ADC922E710}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F812A185-7775-455A-8F63-D9ADC922E710}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{F812A185-7775-455A-8F63-D9ADC922E710}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.CD_ROM|Mixed Platforms.ActiveCfg = CD_ROM
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.CD_ROM|Mixed Platforms.Build.0 = CD_ROM
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.CD_ROM|x86.ActiveCfg = CD_ROM
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.CD_ROM|x86.Build.0 = CD_ROM
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Debug|Mixed Platforms.ActiveCfg = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Debug|Mixed Platforms.Build.0 = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Debug|x86.ActiveCfg = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Debug|x86.Build.0 = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.DVD-5|Mixed Platforms.ActiveCfg = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.DVD-5|Mixed Platforms.Build.0 = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.DVD-5|x86.ActiveCfg = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.DVD-5|x86.Build.0 = DVD-5
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Release|Mixed Platforms.ActiveCfg = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Release|Mixed Platforms.Build.0 = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Release|x86.ActiveCfg = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.Release|x86.Build.0 = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.SingleImage|Mixed Platforms.ActiveCfg = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.SingleImage|Mixed Platforms.Build.0 = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.SingleImage|x86.ActiveCfg = SingleImage
+		{389CCECB-8ED2-4EE2-A053-E98269BA35B1}.SingleImage|x86.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
