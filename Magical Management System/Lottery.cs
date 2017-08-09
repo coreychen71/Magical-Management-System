@@ -27,7 +27,7 @@ namespace Magical_Management_System
             SqlConnection con = new SqlConnection("server=TCP:192.168.1.3;database=CMS;uid=sa;pwd=Magical9070");
             con.Open();
             //找出仍在職業務人員工號與姓名
-            string SelectSales = "select meno, name from memb where (meno like '03%') and (dpna='300') and (quidate is null);";
+            string SelectSales = "select meno, name from memb where dpna = '300' and meno <> '0201' and quidate is null order by meno asc";
             SqlDataAdapter readname = new SqlDataAdapter(SelectSales, con);
             DataSet sn = new DataSet();
             readname.Fill(sn, "name");
@@ -39,6 +39,7 @@ namespace Magical_Management_System
             cboSalesName.DataSource = sn.Tables["name"];
             //指定將sn裡的name Tables的姓名欄位為cboSalesName選單資料
             cboSalesName.DisplayMember = "name";
+            cboSalesName.DropDownStyle = ComboBoxStyle.DropDownList;
             lblSalesMeno.Text = "";
             con.Close();
         }

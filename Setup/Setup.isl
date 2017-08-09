@@ -2380,7 +2380,7 @@
 		<row><td>DVD-18</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>15.83</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-5</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1028</td><td>0</td><td>2</td><td>Intel</td><td/><td>1028</td><td>0</td><td>4.38</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-9</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>7.95</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>SingleImage</td><td>Express</td><td>D:\C# Code\Magical Management System</td><td>PackageName</td><td>1</td><td>1028</td><td>0</td><td>1</td><td>Intel</td><td/><td>1028</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>3</td></row>
+		<row><td>SingleImage</td><td>Express</td><td>D:\C# Code\Magical Management System</td><td>PackageName</td><td>1</td><td>1028</td><td>0</td><td>1</td><td>Intel</td><td/><td>1028</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>1</td></row>
 		<row><td>WebDeployment</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>4</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>124941</td><td/><td/><td/><td>3</td></row>
 	</table>
 
@@ -2590,6 +2590,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_6431C19D_4FC0_40BE_8F2C_2CEB85AC6B25_</td><td>Microsoft .NET Framework 4.5 Full.prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -2623,10 +2624,10 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1028</td><td>神奇科技股份有限公司</td><td>0</td><td/><td>1898256943</td></row>
+		<row><td>COMPANY_NAME</td><td>1028</td><td>神奇科技股份有限公司</td><td>0</td><td/><td>-1012560368</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1028</td><td>總是安裝</td><td>0</td><td/><td>1898305967</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1028</td><td>系統顏色設定不足以執行 [ProductName]。</td><td>0</td><td/><td>1898305967</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1028</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1898305967</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1028</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1012545937</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1028</td><td>作業系統不足以執行 [ProductName]。</td><td>0</td><td/><td>1898305967</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1028</td><td>處理器不足以執行 [ProductName]。</td><td>0</td><td/><td>1898305967</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1028</td><td>RAM 大小不足以執行 [ProductName]。</td><td>0</td><td/><td>1898305967</td></row>
@@ -3725,8 +3726,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1028</td><td>對於執行 [ProductName] 記憶體量不足。</td><td>0</td><td/><td>1898305967</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1028</td><td>對於執行 [ProductName] 螢幕解析度不足。</td><td>0</td><td/><td>1898305967</td></row>
 		<row><td>ID_STRING1</td><td>1028</td><td/><td>0</td><td/><td>1898305967</td></row>
-		<row><td>ID_STRING2</td><td>1028</td><td>http://www.magical.net.tw</td><td>0</td><td/><td>1898269583</td></row>
-		<row><td>ID_STRING3</td><td>1028</td><td>Magical Management System</td><td>0</td><td/><td>1898305967</td></row>
+		<row><td>ID_STRING2</td><td>1028</td><td>http://www.magical.net.tw</td><td>0</td><td/><td>1277496784</td></row>
+		<row><td>ID_STRING3</td><td>1028</td><td>神奇科技股份有限公司</td><td>0</td><td/><td>-1012560368</td></row>
 		<row><td>ID_STRING4</td><td>1028</td><td>Installation</td><td>0</td><td/><td>1898299951</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Installation</td><td>0</td><td/><td>1898297903</td></row>
 		<row><td>ID_STRING5</td><td>1028</td><td>LAUNCH~1.EXE|Launch msiexec.exe</td><td>0</td><td/><td>1898293935</td></row>
@@ -3988,7 +3989,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{FB90C44E-FC16-4442-ADBB-227071387D5F}</td></row>
 		<row><td>ISUSSignature</td><td>{2DF2F816-71DF-473B-B559-325A7233DD1E}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewShortcuts,viewUI,viewObjects,viewRelease</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewShortcuts,viewUI,viewObjects,viewRelease,viewISToday,viewAppFiles</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4360,9 +4361,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKAPPPOOLS</td><td>##IDS_PROGMSG_IIS_ROLLBACKAPPPOOLS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
-		<row><td>ProductCode</td><td>{7520F723-0F18-4F45-9681-47DD7A01298A}</td><td/></row>
+		<row><td>ProductCode</td><td>{FC1CCB8A-323B-47E7-9D1B-B156CB209BE0}</td><td/></row>
 		<row><td>ProductName</td><td>Magical Management System</td><td/></row>
-		<row><td>ProductVersion</td><td>2.20.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>2.30.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4378,7 +4379,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
-		<row><td>UpgradeCode</td><td>{F52A1940-9D73-45E5-9568-9FBF854D5C33}</td><td/></row>
+		<row><td>UpgradeCode</td><td>{8E3F0DBE-2FEC-4F2D-B8EB-6842772421EB}</td><td/></row>
 		<row><td>_IsMaintenance</td><td>Change</td><td/></row>
 		<row><td>_IsSetupTypeMin</td><td>Typical</td><td/></row>
 	</table>
