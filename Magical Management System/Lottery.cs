@@ -42,6 +42,8 @@ namespace Magical_Management_System
             cboSalesName.DropDownStyle = ComboBoxStyle.DropDownList;
             lblSalesMeno.Text = "";
             con.Close();
+            dataGridView1.ReadOnly = true;
+            dataGridView2.ReadOnly = true;
         }
 
         //設定txtNum只能輸入數字
@@ -55,7 +57,56 @@ namespace Magical_Management_System
 
         public void btnStart_Click(object sender, EventArgs e)
         {
-            if (cboSalesName.SelectedIndex == 0)
+            var comm = string.Empty;
+            if (chkAllSales.Checked)
+            {
+                comm = "select paylist.ano+paylist.cno+paylist.cust 'customer', comm.cname, custom.name, paylist.price, custom.address, " +
+                    "custom.tel, custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),paylist.p_date,120) 'p_date' from paylist,comm,custom where " +
+                    "custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno and " +
+                    "paylist.cust=custom.cust and paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and paylist.v_date is null and paylist.kind=3" +
+                    " union " +
+                    "select TSBank.ano+TSBank.cno+TSBank.cust 'customer', comm.cname, custom.name, TSBank.price, custom.address, custom.tel, " +
+                    "custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),TSBank.p_date,120) 'p_date' from comm,custom,maintain,TSBank where " +
+                    "TSBank.ano=comm.ano and TSBank.cno=comm.cno and TSBank.ano=maintain.ano and " +
+                    "TSBank.cno=maintain.cno and TSBank.cust=maintain.cust and TSBank.ano=custom.ano and TSBank.cno=custom.cno and " +
+                    "TSBank.cust=custom.cust and maintain.finishtime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and TSBank.p_date between '" +
+                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
+                    "' and TSBank.ps is null" +
+                    " union " +
+                    "select paylist.ano+paylist.cno+paylist.cust 'customer', comm.cname, custom.name, paylist.price, custom.address, " +
+                    "custom.tel, custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),paylist.p_date,120) 'p_date' from paylist,comm,custom " +
+                    "where custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno " +
+                    "and paylist.cust=custom.cust and custom.setdate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' order by p_date asc";
+            }
+            else
+            {
+                comm = "select paylist.ano+paylist.cno+paylist.cust 'customer', comm.cname, custom.name, paylist.price, custom.address, " +
+                    "custom.tel, custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),paylist.p_date,120) 'p_date' from paylist,comm,custom where " +
+                    "custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno and " +
+                    "paylist.cust=custom.cust and paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text +
+                    "' and paylist.v_date is null and paylist.kind=3" +
+                    " union " +
+                    "select TSBank.ano+TSBank.cno+TSBank.cust 'customer', comm.cname, custom.name, TSBank.price, custom.address, custom.tel, " +
+                    "custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),TSBank.p_date,120) 'p_date' from comm,custom,maintain,TSBank where " +
+                    "TSBank.ano=comm.ano and TSBank.cno=comm.cno and comm.meno='" + lblSalesMeno.Text + "' and TSBank.ano=maintain.ano and " +
+                    "TSBank.cno=maintain.cno and TSBank.cust=maintain.cust and TSBank.ano=custom.ano and TSBank.cno=custom.cno and " +
+                    "TSBank.cust=custom.cust and maintain.finishtime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and TSBank.p_date between '" +
+                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
+                    "' and TSBank.ps is null" +
+                    " union " +
+                    "select paylist.ano+paylist.cno+paylist.cust 'customer', comm.cname, custom.name, paylist.price, custom.address, " +
+                    "custom.tel, custom.cell, convert(char(10),custom.setdate,120) 'setdate', convert(char(10),custom.startdate,120) 'startdate', convert(char(10),paylist.p_date,120) 'p_date' from paylist,comm,custom " +
+                    "where custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno " +
+                    "and paylist.cust=custom.cust and custom.setdate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
+                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text + "' " +
+                    "order by p_date asc";
+            }
+            if (!chkAllSales.Checked & cboSalesName.SelectedIndex == 0)
             {
                 MessageBox.Show("請選擇業務人員！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -65,28 +116,7 @@ namespace Magical_Management_System
                 SqlConnection con = new SqlConnection("server=TCP:192.168.1.3;database=CMS;uid=sa;pwd=Magical9070");
                 con.Open();
                 //依指定的日期區間撈出指定業務人員在區間內的新申裝用戶資料並以繳費日期做正排序
-                string comm = "select paylist.ano, paylist.cno, paylist.cust, comm.cname, custom.name, paylist.price, custom.address, " +
-                    "custom.tel, custom.cell, custom.setdate, custom.startdate, paylist.p_date from paylist,comm,custom where " +
-                    "custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno and " +
-                    "paylist.cust=custom.cust and paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text +
-                    "' and paylist.v_date is null and paylist.kind=3" +
-                    " union " +
-                    "select TSBank.ano, TSBank.cno, TSBank.cust, comm.cname, custom.name, TSBank.price, custom.address, custom.tel, " +
-                    "custom.cell, custom.setdate, custom.startdate, TSBank.p_date from comm,custom,maintain,TSBank where " +
-                    "TSBank.ano=comm.ano and TSBank.cno=comm.cno and comm.meno='" + lblSalesMeno.Text + "' and TSBank.ano=maintain.ano and " +
-                    "TSBank.cno=maintain.cno and TSBank.cust=maintain.cust and TSBank.ano=custom.ano and TSBank.cno=custom.cno and " +
-                    "TSBank.cust=custom.cust and maintain.finishtime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and TSBank.p_date between '" +
-                    dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
-                    "' and TSBank.ps is null" +
-                    " union " +
-                    "select paylist.ano, paylist.cno, paylist.cust, comm.cname, custom.name, paylist.price, custom.address, " +
-                    "custom.tel, custom.cell, custom.setdate, custom.startdate, paylist.p_date from paylist,comm,custom " +
-                    "where custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno " +
-                    "and paylist.cust=custom.cust and custom.setdate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                    "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text + "' " +
-                    "order by p_date asc";
+                
                 SqlDataAdapter selectdata = new SqlDataAdapter(comm, con);
                 DataTable readall = new DataTable();
                 readall.Locale = System.Globalization.CultureInfo.InvariantCulture;
@@ -94,31 +124,17 @@ namespace Magical_Management_System
                 //將DataTable的筆數加總並傳至lblDataNum.Text
                 lblDataNum.Text = "共" + readall.Rows.Count + "筆";
                 dataGridView1.DataSource = readall;
-                dataGridView1.Columns[0].HeaderText = "區碼";
-                dataGridView1.Columns[1].HeaderText = "社區碼";
-                dataGridView1.Columns[2].HeaderText = "用戶碼";
-                dataGridView1.Columns[3].HeaderText = "社區名稱";
-                dataGridView1.Columns[4].HeaderText = "姓名";
-                dataGridView1.Columns[5].HeaderText = "金額";
-                dataGridView1.Columns[6].HeaderText = "地址";
-                dataGridView1.Columns[7].HeaderText = "電話";
-                dataGridView1.Columns[8].HeaderText = "手機";
-                dataGridView1.Columns[9].HeaderText = "裝機日";
-                dataGridView1.Columns[10].HeaderText = "起算日";
-                dataGridView1.Columns[11].HeaderText = "繳費日";
-                //指定dataGridView1的欄位寬
-                dataGridView1.Columns[0].Width = 60;
-                dataGridView1.Columns[1].Width = 70;
-                dataGridView1.Columns[2].Width = 70;
-                dataGridView1.Columns[3].Width = 120;
-                dataGridView1.Columns[4].Width = 100;
-                dataGridView1.Columns[5].Width = 60;
-                dataGridView1.Columns[6].Width = 250;
-                dataGridView1.Columns[7].Width = 70;
-                dataGridView1.Columns[8].Width = 70;
-                dataGridView1.Columns[9].Width = 70;
-                dataGridView1.Columns[10].Width = 70;
-                dataGridView1.Columns[11].Width = 70;
+                dataGridView1.Columns[0].HeaderText = "用戶編號";
+                dataGridView1.Columns[1].HeaderText = "社區名稱";
+                dataGridView1.Columns[2].HeaderText = "姓名";
+                dataGridView1.Columns[3].HeaderText = "金額";
+                dataGridView1.Columns[4].HeaderText = "地址";
+                dataGridView1.Columns[5].HeaderText = "電話";
+                dataGridView1.Columns[6].HeaderText = "手機";
+                dataGridView1.Columns[7].HeaderText = "裝機日";
+                dataGridView1.Columns[8].HeaderText = "起算日";
+                dataGridView1.Columns[9].HeaderText = "繳費日";
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
 
@@ -160,67 +176,50 @@ namespace Magical_Management_System
                 }
                 else
                 {
-                    //透過SQL指令亂數排序後，再隨機抽出txtNum指定的資料筆數並秀於DataGridView2
-                    SqlConnection con = new SqlConnection("server=TCP:192.168.1.3;database=CMS;uid=sa;pwd=Magical9070");
-                    con.Open();
-                    string comm = "select paylist.ano, paylist.cno, paylist.cust, comm.cname, custom.name, paylist.price, custom.address, " +
-                        "custom.tel, custom.cell, custom.setdate, custom.startdate, paylist.p_date into #TT from paylist,comm,custom where " +
-                        "custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno and " +
-                        "paylist.cust=custom.cust and paylist.p_date between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                        "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text +
-                        "' and paylist.v_date is null and paylist.kind=3" +
-                        " union " +
-                        "select TSBank.ano, TSBank.cno, TSBank.cust, comm.cname, custom.name, TSBank.price, custom.address, custom.tel, " +
-                        "custom.cell, custom.setdate, custom.startdate, TSBank.p_date from comm,custom,maintain,TSBank where " +
-                        "TSBank.ano=comm.ano and TSBank.cno=comm.cno and comm.meno='" + lblSalesMeno.Text + "' and TSBank.ano=maintain.ano and " +
-                        "TSBank.cno=maintain.cno and TSBank.cust=maintain.cust and TSBank.ano=custom.ano and TSBank.cno=custom.cno and " +
-                        "TSBank.cust=custom.cust and maintain.finishtime between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                        "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and TSBank.p_date between '" +
-                        dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") + "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") +
-                        "' and TSBank.ps is null"+
-                        " union " +
-                        "select paylist.ano, paylist.cno, paylist.cust, comm.cname, custom.name, paylist.price, custom.address, " +
-                        "custom.tel, custom.cell, custom.setdate, custom.startdate, paylist.p_date from paylist,comm,custom " +
-                        "where custom.ano=paylist.ano and paylist.ano=comm.ano and paylist.cno=comm.cno and paylist.cno=custom.cno " +
-                        "and paylist.cust=custom.cust and custom.setdate between '" + dtpStart.Value.ToString("yyyy-MM-dd 00:00:00") +
-                        "' and '" + dtpEnd.Value.ToString("yyyy-MM-dd 23:59:59") + "' and comm.meno='" + lblSalesMeno.Text + "' " +
-                        "order by p_date asc "+
-                        "select top " + txtNum.Text + " IDENTITY(int,1,1) as id, ano, cno, cust, cname, name, price, address, tel, cell, " +
-                        "setdate, startdate, p_date into #DD from #TT order by NewID() " +
-                        "select * from #DD";
-                    SqlDataAdapter RandomUser = new SqlDataAdapter(comm, con);
-                    DataTable ReadUser = new DataTable();
-                    ReadUser.Locale = System.Globalization.CultureInfo.InvariantCulture;
-                    RandomUser.Fill(ReadUser);
-                    lblUser.Text = ReadUser.Rows.Count + "筆";
-                    dataGridView2.DataSource = ReadUser;
-                    dataGridView2.Columns[0].HeaderText="ID";
-                    dataGridView2.Columns[1].HeaderText = "區碼";
-                    dataGridView2.Columns[2].HeaderText = "社區碼";
-                    dataGridView2.Columns[3].HeaderText = "用戶碼";
-                    dataGridView2.Columns[4].HeaderText = "社區名稱";
-                    dataGridView2.Columns[5].HeaderText = "姓名";
-                    dataGridView2.Columns[6].HeaderText = "金額";
-                    dataGridView2.Columns[7].HeaderText = "地址";
-                    dataGridView2.Columns[8].HeaderText = "電話";
-                    dataGridView2.Columns[9].HeaderText = "手機";
-                    dataGridView2.Columns[10].HeaderText = "裝機日";
-                    dataGridView2.Columns[11].HeaderText = "起算日";
-                    dataGridView2.Columns[12].HeaderText = "繳費日";
-                    dataGridView2.Columns[0].Width = 30;
-                    dataGridView2.Columns[1].Width = 60;
-                    dataGridView2.Columns[2].Width = 70;
-                    dataGridView2.Columns[3].Width = 70;
-                    dataGridView2.Columns[4].Width = 120;
-                    dataGridView2.Columns[5].Width = 100;
-                    dataGridView2.Columns[6].Width = 60;
-                    dataGridView2.Columns[7].Width = 250;
-                    dataGridView2.Columns[8].Width = 70;
-                    dataGridView2.Columns[9].Width = 70;
-                    dataGridView2.Columns[10].Width = 70;
-                    dataGridView2.Columns[11].Width = 70;
-                    dataGridView2.Columns[12].Width = 70;
-                    con.Close();
+                    var srcData = (DataTable)dataGridView1.DataSource;
+                    var result = srcData.Clone();
+                    var aryNum = new int[Convert.ToInt32(txtNum.Text)];
+                    var random = new Random();
+                    for (int i = 0; i < Convert.ToInt32(txtNum.Text); i++)
+                    {
+                        Reload:
+                        var num = random.Next(0, (srcData.Rows.Count - 1));
+                        if (aryNum.Contains(num))
+                        {
+                            goto Reload;
+                        }
+                        else
+                        {
+                            aryNum[i] = num;
+                            var copyRow = srcData.Rows[aryNum[i]];
+                            DataRow row = result.NewRow();
+                            for (int y = 0; y < result.Columns.Count; y++)
+                            {
+                                row[y] = copyRow[y];
+                            }
+                            result.Rows.Add(row);
+                        }
+                    }
+                    result.Columns.Add("Item");
+                    result.Columns["Item"].SetOrdinal(0);
+                    for(int i = 0; i<result.Rows.Count; i++)
+                    {
+                        result.Rows[i]["Item"] = i + 1;
+                    }
+                    lblUser.Text = result.Rows.Count + "筆";
+                    dataGridView2.DataSource = result;
+                    dataGridView2.Columns[0].HeaderText="Item";
+                    dataGridView2.Columns[1].HeaderText = "用戶編號";
+                    dataGridView2.Columns[2].HeaderText = "社區名稱";
+                    dataGridView2.Columns[3].HeaderText = "姓名";
+                    dataGridView2.Columns[4].HeaderText = "金額";
+                    dataGridView2.Columns[5].HeaderText = "地址";
+                    dataGridView2.Columns[6].HeaderText = "電話";
+                    dataGridView2.Columns[7].HeaderText = "手機";
+                    dataGridView2.Columns[8].HeaderText = "裝機日";
+                    dataGridView2.Columns[9].HeaderText = "起算日";
+                    dataGridView2.Columns[10].HeaderText = "繳費日";
+                    dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 }
             }
         }
@@ -321,6 +320,18 @@ namespace Magical_Management_System
                     excel = null;
                     GC.Collect();
                 }
+            }
+        }
+
+        private void chkAllSales_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAllSales.Checked)
+            {
+                cboSalesName.Enabled = false;
+            }
+            else
+            {
+                cboSalesName.Enabled = true;
             }
         }
     }

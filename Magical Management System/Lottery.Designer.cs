@@ -50,6 +50,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnToExcel = new System.Windows.Forms.Button();
             this.btnShootOut = new System.Windows.Forms.Button();
+            this.chkAllSales = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +115,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(620, 230);
             this.dataGridView1.TabIndex = 5;
             // 
@@ -147,6 +149,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(12, 413);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(620, 200);
             this.dataGridView2.TabIndex = 8;
             // 
@@ -282,11 +285,24 @@
             this.btnShootOut.UseVisualStyleBackColor = true;
             this.btnShootOut.Click += new System.EventHandler(this.btnShootOut_Click);
             // 
+            // chkAllSales
+            // 
+            this.chkAllSales.AutoSize = true;
+            this.chkAllSales.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.chkAllSales.Location = new System.Drawing.Point(71, 48);
+            this.chkAllSales.Name = "chkAllSales";
+            this.chkAllSales.Size = new System.Drawing.Size(88, 23);
+            this.chkAllSales.TabIndex = 25;
+            this.chkAllSales.Text = "全體業務";
+            this.chkAllSales.UseVisualStyleBackColor = true;
+            this.chkAllSales.CheckedChanged += new System.EventHandler(this.chkAllSales_CheckedChanged);
+            // 
             // Lottery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 632);
+            this.Controls.Add(this.chkAllSales);
             this.Controls.Add(this.btnShootOut);
             this.Controls.Add(this.btnToExcel);
             this.Controls.Add(this.lblUser);
@@ -343,6 +359,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnToExcel;
         private System.Windows.Forms.Button btnShootOut;
+        private System.Windows.Forms.CheckBox chkAllSales;
     }
 }
 
